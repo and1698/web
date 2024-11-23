@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kekasihku</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('gunung.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .heart {
+            font-size: 5rem;
+            color: #ff4d4d;
+            animation: pulse 1.5s infinite;
+        }
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #e63946;
+        }
+        .gallery {
+            display: none; /* Disembunyikan awalnya */
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+        .gallery img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .zoomed-in {
+            transform: scale(2);
+            cursor: zoom-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="initialView">
+        <h1>Untuk Kekasih Tersayang</h1>
+        <div class="heart">❤️</div>
+        <p>
+            Hai sayangku Nisa'ul Afifah,<br>
+            Aku ingin kau tahu bahwa aku mencintaimu lebih dari apapun di dunia ini.<br>
+            Kau adalah alasan aku tersenyum setiap hari.<br>
+            Terima kasih telah menjadi seseorang yang istimewa di hidupku. 💖
+        </p>
+        <button onclick="showPhotos()">Klik di sini untuk melihat kenangan kita!</button>
+    </div>
+
+    <div class="gallery" id="photoGallery">
+        <!-- Foto akan ditampilkan di sini -->
+        <img src="nisa1.jpg" alt="Foto 1" onclick="zoomPhoto(this)">
+        <img src="kita1.jpg" alt="Foto 2" onclick="zoomPhoto(this)">
+        <img src="kita2.jpg" alt="Foto 3" onclick="zoomPhoto(this)">
+        <img src="kita3.jpg" alt="Foto 4" onclick="zoomPhoto(this)">
+        <img src="kita4.jpg" alt="Foto 5" onclick="zoomPhoto(this)">
+        <button onclick="goBack()">Kembali ke Tampilan Awal</button>
+    </div>
+
+    <div class="footer">
+        Created by <strong>Andrean Putra Pratama</strong>
+    </div>
+
+    <script>
+        function showPhotos() {
+            const gallery = document.getElementById('photoGallery');
+            const initialView = document.getElementById('initialView');
+            initialView.style.display = 'none';  // Sembunyikan tampilan awal
+            gallery.style.display = 'block'; // Tampilkan galeri
+            window.scrollTo(0, document.body.scrollHeight); // Scroll ke bawah
+        }
+
+        function zoomPhoto(imgElement) {
+            // Toggle zoom-in/zoom-out pada foto
+            if (imgElement.classList.contains("zoomed-in")) {
+                imgElement.classList.remove("zoomed-in");
+            } else {
+                imgElement.classList.add("zoomed-in");
+            }
+        }
+
+        function goBack() {
+            const gallery = document.getElementById('photoGallery');
+            const initialView = document.getElementById('initialView');
+            gallery.style.display = 'none';  // Sembunyikan galeri foto
+            initialView.style.display = 'block'; // Tampilkan tampilan awal
+        }
+    </script>
+</body>
+</html>
